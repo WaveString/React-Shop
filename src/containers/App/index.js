@@ -11,8 +11,6 @@ import {
     Route
 } from 'react-router-dom';
 
-// import {} from '../../user';
-
 import styles from './index.css';
 
 export class App extends Component {
@@ -21,6 +19,15 @@ export class App extends Component {
     }
 
     componentDidMount() {
+        var data = new FormData();
+        data.append( "json", JSON.stringify( {
+            login: 'admin',
+            password: 'admin'
+        } ) );
+        fetch(`${process.env.API_URL}/login`, {
+            method: 'POST',
+            body: data
+        });
     }
 
     render() {

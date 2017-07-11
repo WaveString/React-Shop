@@ -2,6 +2,7 @@ import * as API from '../services/api';
 
 export const FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS';
 export const FETCH_PRODUCTS_ERROR = 'FETCH_PRODUCTS_ERROR';
+export const ADD_IN_BASKET = 'ADD_IN_BASKET';
 
 export function fetchProducts() {
     return (dispatch) => {
@@ -25,6 +26,13 @@ function fetchProductsError(error) {
     return {
         type: FETCH_PRODUCTS_ERROR,
         error
+    };
+}
+
+export function addInBasket(product) {
+    return {
+        type: ADD_IN_BASKET,
+        product
     };
 }
 

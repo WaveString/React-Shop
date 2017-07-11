@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import ProductList from "../../components/ProductList/index";
-import { fetchProducts } from "../../actions/products";
+import { fetchProducts, addInBasket } from "../../actions/products";
 
 import styles from './index.css';
 
@@ -11,14 +11,15 @@ export class Catalog extends Component {
     }
 
     componentDidMount() {
-        var { fetchProducts } = this.props;
-        fetchProducts();
+        const { fetchProductsAction } = this.props;
+        fetchProductsAction();
     }
 
     render() {
+        const { products, onAddInBasket } = this.props;
         return (
             <div className={styles.wrapper}>
-                <ProductList/>
+                <ProductList {...{ products, onAddInBasket }}/>
             </div>
         );
     }
@@ -26,12 +27,13 @@ export class Catalog extends Component {
 
 const select = (state) => {
     return {
-        products: state.products
+        products: state.products.list
     };
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchProducts: (products) => dispatch(fetchProducts(products))
+    fetchProductsAction: (products) => dispatch(fetchProducts(products)),
+    onAddInBasket: (product) => dispatch(addInBasket(product))
 });
 
 export default connect(select, mapDispatchToProps)(Catalog);

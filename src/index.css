@@ -1,0 +1,8 @@
+:global(html) {
+    min-height: 100%;
+}
+
+:global(body) {
+    font: 14px "Open Sans", sans-serif;
+    background: #fefefe;
+}

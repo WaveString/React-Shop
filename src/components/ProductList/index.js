@@ -12,10 +12,11 @@ export default class ProductList extends Component {
     }
 
     render() {
-        const {products = []} = this.props;
+        const { products, onAddInBasket } = this.props;
+        console.log('this.props', this.props);
         return (
             <div className={styles.wrapper}>
-                { products.map(item => <ProductItem />) }
+                { products.map((product, i)=> <ProductItem {...{ product, onAddInBasket }} key={i}/>) }
             </div>
         );
     }

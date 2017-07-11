@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react';
 import { Provider } from 'react-redux';
 import DevTools from '../../components/DevTools';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import App from '../App';
 
 const __DEVELOPMENT__ = process.env.NODE_ENV === 'development';

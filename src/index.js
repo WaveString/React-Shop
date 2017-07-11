@@ -13,6 +13,8 @@ const store = configureStore();
 
 const rootEl = document.getElementById('root');
 
+import './index.css';
+
 ReactDom.render(
     <AppContainer>
         <Root store={ store }/>
