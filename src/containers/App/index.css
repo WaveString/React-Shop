@@ -1,3 +1,8 @@
+.container {
+    height: 100%;
+    width: 60%;
+}
+
 .list {
     display: inline-block;
     vertical-align: top;

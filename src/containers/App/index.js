@@ -18,27 +18,13 @@ export class App extends Component {
         super(props);
     }
 
-    componentDidMount() {
-        var data = new FormData();
-        data.append( "json", JSON.stringify( {
-            login: 'admin',
-            password: 'admin'
-        } ) );
-        fetch(`${process.env.API_URL}/login`, {
-            method: 'POST',
-            body: data
-        });
-    }
-
     render() {
-        const {
-
-        } = this.props;
+        const { user } = this.props;
 
         return (
             <Router>
-                <div>
-                    <Header />
+                <div className={styles.container}>
+                    <Header {...{ user }}/>
                     <Route exact path="/" component={Catalog}/>
                     <Route path="/basket" component={Basket}/>
                     <Route path="/login" component={Auth}/>
@@ -54,8 +40,4 @@ const select = (state) => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => ({
-    initializeValues: (books, sort) => dispatch(initializeValues(books, sort)),
-});
-
-export default connect(select, mapDispatchToProps)(App);
+export default connect(select)(App);

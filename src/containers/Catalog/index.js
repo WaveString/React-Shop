@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
-import ProductList from "../../components/ProductList/index";
-import { fetchProducts, addInBasket } from "../../actions/products";
+import ProductList from '../../components/ProductList/index';
+import { fetchProducts, addInBasket } from '../../actions/products';
 
 import styles from './index.css';
 

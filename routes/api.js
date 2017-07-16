@@ -68,15 +68,15 @@ router.post('/login', function(req, res) {
     const user = users.filter(item => item.login === login)[0];
 
     if (!user) {
-        res.status(401).json({ message: 'invalid username or password' });
+        res.status(401).json({ message: 'Неверный логин или пароль' });
     }
 
     if (user.password === password) {
         const payload = { id: user.id, login: user.login };
         const token = jwt.sign(payload, jwtOptions.secretOrKey);
-        res.json({ token: token });
+        res.json({ token, user });
     } else {
-        res.status(401).json({ message: 'invalid username or password' });
+        res.status(401).json({ message: 'Неверный логин или пароль' });
     }
 });
 

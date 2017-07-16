@@ -5,7 +5,7 @@ import styles from './index.css';
 
 const Header = ({ logged }) => (
     <div className={styles.wrapper}>
-        <Toolbar style={{ 'backgroundColor': '#212121' }}>
+        <Toolbar style={{ 'backgroundColor': '#24292e', 'padding': '0 40px' }}>
             <ToolbarGroup firstChild={true}>
                 <Link to={`/`} className={styles.link}>
                    Магазин

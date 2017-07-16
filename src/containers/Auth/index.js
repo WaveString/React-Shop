@@ -1,14 +1,33 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
+import Login from '../../components/Login';
+import { connect } from 'react-redux';
+import { loginUser } from "../../actions/user";
+
 import styles from './index.css';
 
-const Auth = () => (
-    <div className={styles.wrapper}>
-        Auth
-    </div>
-);
+export class Auth extends Component {
+    constructor(props) {
+        super(props);
+    }
 
-Auth.propTypes = {
+    render() {
+        const { onLogin, loginForm } = this.props;
+        return (
+            <div className={styles.wrapper}>
+                <Login {...{ onLogin, loginForm }}/>
+            </div>
+        );
+    }
+}
 
+const select = (state) => {
+    return {
+        loginForm: state.loginForm
+    };
 };
 
-export default Auth;
+const mapDispatchToProps = (dispatch) => ({
+    onLogin: (data) => dispatch(loginUser(data))
+});
+
+export default connect(select, mapDispatchToProps)(Auth);
